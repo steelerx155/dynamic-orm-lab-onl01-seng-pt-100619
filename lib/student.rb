@@ -3,6 +3,7 @@ require 'active_support/inflector'
 require 'interactive_record.rb'
 
 class Student < InteractiveRecord
+  
   def self.column_names
     DB[:conn].results_as_hash = true
     
@@ -11,7 +12,7 @@ class Student < InteractiveRecord
     column_names = []
     
     table_info.each do |column|
-      column_names << column["name"]
+      column_names << column["name", "id"]
     end
     column_names.compact
   end  
