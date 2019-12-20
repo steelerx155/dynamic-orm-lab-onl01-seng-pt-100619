@@ -3,6 +3,8 @@ require 'active_support/inflector'
 
 class InteractiveRecord
 
+  class InteractiveRecord
+
   def self.table_name
     self.to_s.downcase.pluralize
   end
@@ -20,6 +22,7 @@ class InteractiveRecord
     column_names.compact
   end  
   
+
    def initialize(options={})
     options.each do |property, value|
       self.send("#{property}=", value)
@@ -53,8 +56,4 @@ def self.find_by_name(name)
   DB[:conn].execute(sql, name)
 end
 
-def self.find_by(options)
-  sql = "SELECT * FROM #{self.table_name} WHERE options = ?"
-  DB[:conn].execute(sql, options)
-end
 end
