@@ -3,19 +3,6 @@ require 'active_support/inflector'
 require 'interactive_record.rb'
 
 class Student < InteractiveRecord
-
-
-  def initialize(options={})
-    options.each do |property, value|
-    self.send("#{property}=", value)
-    end
-  end
-
-
-  def self.table_name
-    self.to_s.downcase.pluralize
-  end
-  
   def self.column_names
     DB[:conn].results_as_hash = true
     
@@ -28,4 +15,5 @@ class Student < InteractiveRecord
     end
     column_names.compact
   end  
+
 end
